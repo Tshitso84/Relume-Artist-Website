@@ -4,11 +4,13 @@
     box-sizing: border-box;
     text-wrap: balance;
     font-family: 'bogart trial';
+    letter-spacing: 1px;
+    line-height: 1.7;
 }
 
 a{
     text-decoration: none;
-    color: #fff;
+    color: #333;
 }
 
 body{
@@ -22,18 +24,34 @@ body{
 
 header{
     width: 100%;
-    background-color: #000;
+    background-color: #fff;
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+
+
 
 }
 
 nav{
     max-width: 100%;
-    color: #fff;
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 1rem 3%;
     margin: 0 auto;
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+    box-shadow: 0px 46px 75px -19px rgba(0,0,0,0.29);
+    -webkit-box-shadow: 0px 46px 75px -19px rgba(0,0,0,0.29);
+    -moz-box-shadow: 0px 46px 75px -19px rgba(0,0,0,0.29);    z-index: 1000;
+    color: #000;
+
+
+
 }
 ul{
     display: flex;
@@ -72,8 +90,59 @@ button:hover{
 /* Hero section */
 #hero{
     width: 100%;
-    padding: 1rem 3%;
     height: 100vh;
+    background-image:url(assets/images/FB_IMG_1737153269816.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    align-items: flex-end;
+}
+
+.hero-content{
+    color: #fff;
+    height: 30vh;
+    background-color: rgb(168, 72, 8);
+    width: 100%;
+    padding: 1rem 3%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    place-content: center;
+    box-shadow: 0px -31px 75px -19px rgba(0,0,0,0.29);
+-webkit-box-shadow: 0px -31px 75px -19px rgba(0,0,0,0.29);
+-moz-box-shadow: 0px -31px 75px -19px rgba(0,0,0,0.29);
+
+}
+
+.hero-title{
+    width: 100%;
+    font-size: 2.2rem;
+}
+
+.hero-detail{
+    width: 100%;
+    /* border: 1px solid; */
+}
+
+.hero-text{
+    padding-bottom: 20px;
+    font-weight: 200
+}
+
+.hero-buttons{
+    display: flex;
+    gap: 10px;
+}
+
+.hero-btn1{
+    background-color: cornflowerblue;
+    border: 1px solid cornflowerblue;;
+    color: #fff;
+}
+.hero-btn2{
+    background-color: transparent;
+    color: #fff;
+    border: 1px #fff solid;
 }
 /* End Of Hero Section */
 
