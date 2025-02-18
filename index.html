@@ -3,10 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
     <link rel="stylesheet" href="style.css">
     <title>Nomashenge</title>
 </head>
-<body>
+<body class="ovelay-color-music" >
     <header class="header">
         <nav class="navbar">
             <button class="hamburger" aria-label="Menu">
@@ -31,7 +33,7 @@
             <a href="login.html"><button class="login-button">Login</button></a>
         </nav>
     </header>
-    <section id="hero" class="overlay-color">
+    <section id="hero" >
         <div class="hero-content">
             <div class="main-title">
                 <h1>Nomashenge Dlamini</h1>
@@ -56,6 +58,44 @@
             </div>
         </div>
     </section>
+
+            <!-- Music Section -->
+            <section id="music">
+                <h2>Music</h2>
+                <div class="music-list">
+                    <div class="track">
+                        <h3>Izinyoni</h3>
+                        <audio controls>
+                            <source src="track1.mp3" type="audio/mpeg">
+                            Your browser does not support the audio element.
+                        </audio>
+                        <div class="streaming-links">
+                            <a href="#" class="fa fa-spotify"></a>
+                            <a href="#" class="fa fa-apple"></a>
+                            <a href="#" class="fa fa-bandcamp"></a>
+                            <a href="#" class="fa fa-youtube"></a>
+                        </div>
+        
+                    </div>
+                    <div class="track">
+                        <h3>One For You</h3>
+                        <audio controls>
+                            <source src="track2.mp3" type="audio/mpeg">
+                            Your browser does not support the audio element.
+                        </audio>
+                        <div class="streaming-links">
+                            <a href="#" class="fa fa-spotify"></a>
+                            <a href="#" class="fa fa-apple"></a>
+                            <a href="#" class="fa fa-bandcamp"></a>
+                            <a href="#" class="fa fa-youtube"></a>
+                        </div>
+        
+                    </div>
+                    <!-- Add more tracks as needed -->
+                </div>
+            </section>
+            
+    
     <script src="main.js"></script>
 </body>
 </html>
