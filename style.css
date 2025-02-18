@@ -35,6 +35,9 @@ header {
     right: 0;
     overflow: hidden;
     z-index: 1000;
+    box-shadow: -1px 11px 7px -4px rgba(0,0,0,0.28);
+-webkit-box-shadow: -1px 11px 7px -4px rgba(0,0,0,0.28);
+-moz-box-shadow: -1px 11px 7px -4px rgba(0,0,0,0.28);
 
 }
 
@@ -186,7 +189,7 @@ button:hover {
     overflow-wrap: break-word;
     max-width: 100%;
     text-align: center;
-    font-family: falheiz;
+    font-family: faling;
 
     /* background-image: linear-gradient(35deg,white,rgb(243, 243, 243));
     background-clip: text;
