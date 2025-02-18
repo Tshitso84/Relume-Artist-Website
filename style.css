@@ -301,13 +301,11 @@ body {
     z-index: 2;
     backdrop-filter: blur(10px);
     padding: 10px;
-    box-shadow: 0px -31px 75px -19px rgba(0, 0, 0, 0.29);
-    -webkit-box-shadow: 0px -31px 75px -19px rgba(0, 0, 0, 0.29);
-    -moz-box-shadow: 0px -31px 75px -19px rgba(0, 0, 0, 0.29);
     border-radius: 5px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    /* box-shadow: 5px 5px 160px rgba(0, 0, 0, 0.568); */
 }
 
 .hero-text {
@@ -347,6 +345,9 @@ body {
 #music {
     padding: 40px 20px;
     text-align: center;
+    /* background-color:rgba(10, 36, 114, 0.377);
+    border-top-left-radius:50%;
+    border-top-right-radius: 50%; */
 }
 
 
@@ -373,6 +374,10 @@ body {
 @media(max-width:768px){
     .music-list{
         flex-direction: column;
+    }
+
+    #hero{
+        height: 70dvh;
     }
 }
 
