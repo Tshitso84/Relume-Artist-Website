@@ -3,18 +3,23 @@
     padding: 0;
     box-sizing: border-box;
     text-wrap: balance;
-    font-family: chillen;
+    font-family: 'chillen';
     letter-spacing: 2px;
     line-height: 1.7;
 }
 @font-face {
-    font-family: falheiz;
+    font-family: 'falheiz';
     src: url(fonts/falheizregular-l3pne.ttf);
 }
 
 @font-face {
-    font-family: chillen;
+    font-family: 'chillen';
     src: url(fonts/Chillen.ttf);
+}
+
+@font-face {
+    font-family: 'bogart trial';
+    src: url(fonts/Bogart-Regular-trial.ttf);
 }
 
 a {
@@ -105,12 +110,16 @@ body {
     font-weight: 600;
     transition: color 0.3s ease;
     font-size: 1rem;
+    transition: all .3s ease;
+    padding: 0 8px;
+    border-radius: 5px;
     /* color: #ccc; */
     /* text-transform: uppercase; */
 }
 
 .nav-links a:hover {
     color: #007bff;
+    background-color: #e7e7e7;
 }
 
 /* Hamburger Button */
@@ -264,13 +273,21 @@ body {
     overflow-wrap: break-word;
     max-width: 100%;
     text-align: center;
-    font-family: falheiz;
+    font-family: 'falheiz';
 
     /* background-image: linear-gradient(35deg,white,rgb(243, 243, 243));
     background-clip: text;
     -webkit-background-clip: text;
   -webkit-text-fill-color: transparent; */
 
+}
+
+.hero-title{
+    /* background: linear-gradient(75deg,#31266B,#001A78);
+    border: 1px solid;
+    padding: 0 8px;
+    border-radius: 5px; */
+    color: #eee;
 }
 
 .hero-detail {
