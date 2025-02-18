@@ -7,6 +7,36 @@
     letter-spacing: 2px;
     line-height: 1.7;
 }
+
+/* CSS HEX */
+:root{
+--black: #02010aff;
+--oxford-blue: #04052eff;
+--federal-blue: #140152ff;
+--navy-blue: #22007cff;
+--duke-blue: #0d00a4ff;
+}
+
+/* CSS HSL */
+
+:root{--black: hsla(247, 82%, 2%, 1);
+--oxford-blue: hsla(239, 84%, 10%, 1);
+--federal-blue: hsla(254, 98%, 16%, 1);
+--navy-blue: hsla(256, 100%, 24%, 1);
+--duke-blue: hsla(245, 100%, 32%, 1);
+
+}
+
+:root{
+    /* CSS HEX */
+--oxford-blue: #00072dff;
+--penn-blue: #001c55ff;
+--royal-blue-traditional: #0a2472ff;
+--bice-blue: #0e6ba8ff;
+--non-photo-blue: #a6e1faff;
+
+}
+
 @font-face {
     font-family: 'falheiz';
     src: url(fonts/falheizregular-l3pne.ttf);
@@ -317,20 +347,25 @@ body {
 .hero-buttons {
     display: flex;
     gap: 10px;
+    /* border: 1px solid; */
+    padding: 5px;
+    margin-top: 15px;  
 }
 
 .hero-btn1 {
-    background-color: cornflowerblue;
-    border: 1px solid cornflowerblue;
-    color: #fff;
+    background: var(--non-photo-blue);
+    /* border: 1px solid cornflowerblue; */
+    /* color: #fff; */
 }
 
 .hero-btn1:hover{
     background-color: rgb(38, 104, 226);
+    color: #fff;
 }
 .hero-btn2 {
     background-color: transparent;
     color: #fff;
+    padding: 7px 25px;
     border: 1px #fff solid;
 }
 
