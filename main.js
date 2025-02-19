@@ -25,3 +25,23 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
+// ABOUT ARTIST ACCORDION
+
+function toggleAccordion(element) {
+    const parent = element.parentElement;
+    const isActive = parent.classList.contains('active');
+    
+    // Close all accordion items
+    document.querySelectorAll('.accordion-item').forEach(item => {
+      item.classList.remove('active');
+    });
+    
+    // If the clicked item wasn't active, open it
+    if (!isActive) {
+      parent.classList.add('active');
+    }
+  }
+  
+  // Open the first accordion item by default
+  document.querySelector('.accordion-item').classList.add('active');
+

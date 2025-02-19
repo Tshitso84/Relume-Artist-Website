@@ -669,44 +669,44 @@ footer {
     width: 100%;
     gap: 2rem;
 
-    a{
+    a {
         color: #fff;
     }
 
-    h3{
+    h3 {
         color: #fff;
 
     }
 
 }
 
-@media(max-width:768px){
-    .footer-grid{
+@media(max-width:768px) {
+    .footer-grid {
         grid-template-columns: 1fr;
     }
 
-    .main-footer{
+    .main-footer {
         font-size: 11px;
     }
 
-    .col{
+    .col {
         border-top: 1px solid #333;
         padding-top: 1.5rem;
-        }
+    }
 
-        .bottom-title h1 {
-            border: none;
-        }
-    
+    .bottom-title h1 {
+        border: none;
+    }
+
 }
 
-.col{
+.col {
     display: flex;
     flex-direction: column;
     padding-top: 1.5rem;
 }
 
-.col-content{
+.col-content {
     color: #ccc;
     display: flex;
     flex-direction: column;
@@ -714,34 +714,273 @@ footer {
 
 }
 
-.footer-grid h3{
+.footer-grid h3 {
     font-size: 20px;
     text-transform: uppercase;
     margin-bottom: 10px;
 
 }
 
-.contact a{
+.contact a {
     background-color: transparent;
     border: 1px solid #fff;
     width: 120px;
     text-align: center;
     border-radius: 5px;
-    padding: 8px ;
+    padding: 8px;
     color: #fff;
     font-weight: 600;
 }
 
-.main-footer{
+.main-footer {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     /* background-color: var(--black); */
     padding: 1rem 0;
 }
 
-.tagline{
+.tagline {
     text-align: center;
 }
-.copyright{
+
+.copyright {
     text-align: right;
+}
+
+/* END OF FOOTER SECTION */
+
+/* ABOUT SECTION */
+
+
+/* Main Container */
+.about-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    color: #fff;
+    /* background-color: #fff; */
+}
+
+/* Header Styles */
+.artist-header {
+    position: relative;
+    padding: 3rem 0;
+    border-bottom: 1px solid #ffffff31;
+}
+
+.artist-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5rem;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(90deg, white, rgb(218, 218, 218));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    display: inline-block;
+    position: relative;
+}
+
+.artist-title {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 300;
+    font-size: 1.2rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--secondary);
+    margin-bottom: 1.5rem;
+}
+
+/* Bio Sections */
+.bio-section {
+    margin: 3rem 0;
+    position: relative;
+}
+
+.bio-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    color: var(--primary);
+    display: inline-block;
+    position: relative;
+}
+
+.bio-title::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 60%;
+    height: 2px;
+    background: linear-gradient(90deg,  #a6e1faff, transparent);
+}
+
+.timeline-year {
+    display: inline-block;
+    background-color: #fff;
+    color: #333;
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+/* Accordion Style Bio Sections */
+.bio-accordion {
+    margin: 2rem 0;
+}
+
+.accordion-item {
+    margin-bottom: 1rem;
+    border: 1px solid #ffffff31;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: var(--transition);
+    background-color: rgba(0, 7, 45, 0.356);
+    backdrop-filter: blur(30px);
+}
+
+.accordion-item:hover {
+    box-shadow: 0 5px 15px rgba(107, 71, 97, 0.1);
+}
+
+.accordion-header {
+    padding: 1rem 1.5rem;
+    background: linear-gradient(90deg, rgba(107, 71, 97, 0.05), transparent);
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: var(--transition);
+}
+
+.accordion-header:hover {
+    background: linear-gradient(90deg, rgba(107, 71, 97, 0.1), transparent);
+}
+
+.accordion-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    color: var(--primary);
+}
+
+.accordion-icon {
+    font-size: 2.5rem;
+    color: var(--secondary);
+    transition: all .3s ease;
+}
+
+.accordion-content {
+    padding: 0 1.5rem;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease;
+}
+
+.accordion-item.active .accordion-content {
+    max-height: 1000px;
+    /* Large enough to show content */
+    padding: 1.5rem;
+}
+
+.accordion-item.active .accordion-icon {
+    transform: rotate(45deg);
+}
+
+/* Highlights Section */
+.highlights {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.highlight-card {
+    flex: 1 1 300px;
+    padding: 1.5rem;
+    background: linear-gradient(135deg, white, var(--light));
+    border-radius: 8px;
+    border-left: 4px solid var(--non-photo-blue);
+    transition: all .3s ease;
+
+    p{
+        color: #ccc;
+    }
+}
+
+.highlight-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(118, 129, 177, 0.15);
+}
+
+.highlight-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    color: var(--primary);
+    margin-bottom: 0.8rem;
+}
+
+/* Quote styling */
+.quote-section {
+    position: relative;
+    margin: 4rem 0;
+    padding: 3rem 2rem;
+    text-align: center;
+    background: linear-gradient(135deg, rgba(177, 118, 143, 0.1), rgba(230, 164, 196, 0.05));
+    border-radius: 10px;
+}
+
+.quote-icon {
+    font-size: 6rem;
+    color: var(--non-photo-blue);
+    position: absolute;
+    top: -1rem;
+    left: 2rem;
+}
+
+.quote-text {
+    font-family: 'Playfair Display', italic;
+    font-size: 1.5rem;
+    line-height: 1.8;
+    color: var(--primary);
+    margin-bottom: 1.5rem;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .artist-name {
+        font-size: 2.5rem;
+    }
+
+    .artist-title {
+        font-size: 1rem;
+    }
+
+    .bio-title {
+        font-size: 1.5rem;
+    }
+
+    .quote-text {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 1rem;
+    }
+
+    .artist-name {
+        font-size: 2rem;
+    }
+
+    .timeline-year {
+        margin-bottom: 0.5rem;
+    }
+
+    .accordion-title {
+        font-size: 1.2rem;
+    }
 }
