@@ -891,7 +891,7 @@ footer {
 
 .accordion-icon {
     font-size: 2.5rem;
-    color: var(--secondary);
+    color: var(--text-primary);
     transition: all .3s ease;
 }
 
@@ -1094,6 +1094,7 @@ footer {
     margin-bottom: 1rem;
     color: var(--text-primary);
     position: relative;
+    font-family: 'chillen';
 }
 
 /* .poem-info{
@@ -1170,7 +1171,7 @@ footer {
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    background-color: var(--accent-color);
+    background-color: var(--duke-blue);
     display: flex;
     justify-content: center;
     align-items: center;
