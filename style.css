@@ -1096,6 +1096,12 @@ footer {
     position: relative;
 }
 
+/* .poem-info{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid red;
+} */
+
 .poem-author {
     font-style: italic;
     color: var(--text-secondary);
@@ -1107,6 +1113,7 @@ footer {
     white-space: pre-line;
     font-size: 1.1rem;
     line-height: 1.8;
+    color: #fff;
 }
 
 .stanza {
