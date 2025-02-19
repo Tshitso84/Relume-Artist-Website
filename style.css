@@ -3,7 +3,7 @@
     padding: 0;
     box-sizing: border-box;
     text-wrap: balance;
-    font-family: montserrat;
+    font-family: inter;
     letter-spacing: 2px;
     line-height: 1.7;
 }
@@ -497,6 +497,7 @@ audio {
     grid-template-columns: repeat(2, 1fr);
     gap: 1.5rem;
     margin-bottom: 2rem;
+    margin-top: 2rem;
 }
 
 .form-full {
@@ -766,10 +767,11 @@ footer {
     position: relative;
     padding: 3rem 0;
     border-bottom: 1px solid #ffffff31;
+    text-align: center;
 }
 
 .artist-name {
-    font-family: 'Playfair Display', serif;
+    font-family: 'falheiz', serif;
     font-size: 3.5rem;
     margin-bottom: 0.5rem;
     background: linear-gradient(90deg, white, rgb(218, 218, 218));
@@ -797,7 +799,7 @@ footer {
 }
 
 .bio-title {
-    font-family: 'Playfair Display', serif;
+    font-family: 'chillen', serif;
     font-size: 1.8rem;
     margin-bottom: 1.5rem;
     color: var(--primary);
