@@ -3,7 +3,7 @@
     padding: 0;
     box-sizing: border-box;
     text-wrap: balance;
-    font-family: 'chillen';
+    font-family: montserrat;
     letter-spacing: 2px;
     line-height: 1.7;
 }
@@ -724,7 +724,7 @@ footer {
 .contact a {
     background-color: transparent;
     border: 1px solid #fff;
-    width: 120px;
+    /* width: 120px; */
     text-align: center;
     border-radius: 5px;
     padding: 8px;
@@ -904,10 +904,6 @@ footer {
     border-radius: 8px;
     border-left: 4px solid var(--non-photo-blue);
     transition: all .3s ease;
-
-    p{
-        color: #ccc;
-    }
 }
 
 .highlight-card:hover {
@@ -933,7 +929,7 @@ footer {
 }
 
 .quote-icon {
-    font-size: 6rem;
+    font-size: 4rem;
     color: var(--non-photo-blue);
     position: absolute;
     top: -1rem;
