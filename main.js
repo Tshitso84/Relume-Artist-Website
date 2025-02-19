@@ -45,3 +45,25 @@ function toggleAccordion(element) {
   // Open the first accordion item by default
   document.querySelector('.accordion-item').classList.add('active');
 
+
+//   WORK SECTION READING ENHACEMENT
+
+   // Simple interaction to enhance reading experience
+   document.querySelectorAll('.line').forEach(line => {
+    line.addEventListener('mouseover', function() {
+        this.style.transform = 'translateX(10px)';
+    });
+    
+    line.addEventListener('mouseout', function() {
+        this.style.transform = 'translateX(0)';
+    });
+});
+
+// Scroll indicators functionality
+document.querySelectorAll('.scroll-indicator').forEach(indicator => {
+    indicator.addEventListener('click', function() {
+        const poem = this.parentElement;
+        poem.scrollTop += 100;
+    });
+});
+
