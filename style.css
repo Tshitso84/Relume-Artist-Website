@@ -27,6 +27,8 @@
 }
 
 
+
+
 /* CSS HSL */
 
 :root {
@@ -63,6 +65,14 @@
     src: url(fonts/Bogart-Regular-trial.ttf);
 }
 
+em {
+    color: #fff;
+}
+
+small {
+    color: #aaa;
+}
+
 a {
     text-decoration: none;
     color: #333;
@@ -72,7 +82,7 @@ button {
     padding: 8px 25px;
     border: none;
     border-radius: 5px;
-    font-size: 1rem;
+    font-size: clamp(0.8rem, 1vw, clamp(0.8rem, 1vw, 1rem));
     font-weight: 600;
     cursor: pointer;
     transition: all .3s;
@@ -99,6 +109,7 @@ body {
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
+    background-attachment: fixed;
 
 }
 
@@ -126,7 +137,7 @@ body {
     right: 0;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 3%;
+    padding: clamp(0.8rem, 1vw, 1rem) clamp(1%, 2vw, 3%);
     max-width: 100%;
     transition: all .3s ease-in;
 }
@@ -136,27 +147,29 @@ body {
     transform: translateY(-100%);
 }
 
-.logo a {
-    font-size: 1rem;
-    color: #fff;
-    font-weight: 600;
-    background-color: rgb(0, 0, 53);
-    padding: 8px;
-    font-family: 'bogart trial';
-    border-radius: 5px;
+.logo img {
+    border-radius: 50%;
+    /* border: 1px solid #333; */
+    width: 70px;
+    height: 70px;
+    object-fit: cover;
+    background-color: #fff;
+    padding: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 }
+
 
 /* Navigation Links */
 .nav-links {
     display: flex;
-    gap: 1rem;
+    gap: clamp(0.8rem, 1vw, 1rem);
 }
 
 .nav-links a {
     text-decoration: none;
     font-weight: 600;
     transition: color 0.3s ease;
-    font-size: 1rem;
+    font-size: clamp(0.8rem, 1vw, clamp(0.8rem, 1vw, 1rem));
     transition: all .3s ease;
     padding: 0 8px;
     border-radius: 5px;
@@ -190,17 +203,6 @@ body {
     color: #fff;
 }
 
-@media(max-width:768px){
-    button {
-        padding: 7px ;
-        font-size: 10px;
-    }
-
-    .logo a {
-        font-size: 11px;
-    }
-    
-}
 
 .login-button:hover {
     background-color: rgb(0, 0, 173);
@@ -221,7 +223,7 @@ body {
         background-color: rgba(255, 255, 255, 0.637);
         backdrop-filter: blur(15px);
         flex-direction: column;
-        padding: 1rem;
+        padding: clamp(0.8rem, 1vw, 1rem);
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 
     }
@@ -262,6 +264,8 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: clamp(0.8rem, 1vw, 1rem) clamp(1%, 2vw, 3%);
+
 }
 
 .hero-content {
@@ -269,7 +273,7 @@ body {
     background-color: rgba(168, 72, 8, 0);
     width: 100%;
     height: 100%;
-    padding: 1rem 3%;
+    padding: clamp(0.8rem, 1vw, 1rem) clamp(1%, 2vw, 3%);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -308,13 +312,18 @@ body {
 
 .main-title h1 {
     text-shadow: -5px 0px 7px rgba(0, 0, 0, 0.24);
-    font-size: clamp(2rem, 280px, 15vw);
+    font-size: clamp(2rem, 200px, 15vw);
     line-height: 1.1;
     word-wrap: break-word;
     overflow-wrap: break-word;
     max-width: 100%;
     text-align: center;
     font-family: 'falheiz';
+    /* border: 1px solid #00a0c6; */
+    /* text-wrap: nowrap; */
+    /* padding: clamp(0.8rem, 1vw, 1rem) clamp(1%, 2vw, 3%); */
+    margin-inline: auto;
+
 }
 
 .hero-title {
@@ -334,7 +343,7 @@ body {
 }
 
 .hero-text {
-    padding-bottom: 20px;
+    padding-bottom: clamp(0.75rem, 1.5vw, 1.25rem);
     font-weight: 200;
     line-height: 1;
     text-align: center;
@@ -369,7 +378,7 @@ body {
 
 /* Music Section Styles */
 #music {
-    padding: 40px 20px;
+    padding: clamp(1.5rem, 3vw, 2.5rem) clamp(0.75rem, 1.5vw, 1.25rem);
     text-align: center;
     /* background-color:rgba(10, 36, 114, 0.377);
     border-top-left-radius:50%;
@@ -380,18 +389,18 @@ body {
 #music h2 {
     color: #fff;
     font-size: 28px;
-    margin-bottom: 40px;
+    margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
 }
 
 
 .music-list {
     display: flex;
-    border: 1px solid #ffffff34;
+    /* border: 1px solid #ffffff34; */
     align-items: center;
     justify-content: space-evenly;
-    gap: 20px;
+    gap: clamp(0.75rem, 1.5vw, 1.25rem);
     max-width: 900px;
-    padding: 1rem;
+    padding: clamp(0.8rem, 1vw, 1rem);
     margin: 0 auto;
     border-radius: 5px;
 
@@ -476,8 +485,9 @@ audio {
 }
 
 .streaming-links a:hover {
-    background: #555;
+    background: #007bff21;
     transform: translateY(-2px);
+    scale: 1.07;
 }
 
 /* END OF MUSIC SECTION */
@@ -498,7 +508,7 @@ audio {
 
 .booking-header h1 {
     font-size: 2.5rem;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.8rem;
 }
 
 .booking-header h1 span {
@@ -538,7 +548,7 @@ audio {
 }
 
 .form-group label {
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.8rem;
     font-weight: 500;
     font-family: poppins;
 
@@ -559,7 +569,7 @@ audio {
     padding: 0.75rem;
     border: 1px solid #ddd;
     border-radius: 5px;
-    font-size: 1rem;
+    font-size: clamp(0.8rem, 1vw, 1rem);
     background-color: var(--federal-blue);
     color: #f7f7f7;
     font-family: poppins;
@@ -569,14 +579,14 @@ audio {
 .checkbox-group {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 0.5rem;
-    margin: 1rem 0;
+    gap: 0.8rem;
+    margin: clamp(0.8rem, 1vw, 1rem) 0;
 }
 
 .checkbox-item {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 0.8rem;
     font-family: poppins;
 
 }
@@ -586,7 +596,7 @@ audio {
     color: var(--black);
     border: none;
     padding: 0.75rem 2rem;
-    font-size: 1rem;
+    font-size: clamp(0.8rem, 1vw, 1rem);
     border-radius: 4px;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -607,7 +617,7 @@ audio {
     h3 {
         border-bottom: 4px solid var(--bice-blue);
         padding: 8px;
-        margin-bottom: 20px;
+        margin-bottom: clamp(0.75rem, 1.5vw, 1.25rem);
     }
 }
 
@@ -647,7 +657,7 @@ audio {
     }
 
     .container {
-        padding: 1rem;
+        padding: clamp(0.8rem, 1vw, 1rem);
     }
 
     .booking-header h1 {
@@ -660,19 +670,27 @@ audio {
 /* FOOTER */
 
 footer {
-    background-color: var(--oxford-blue);
+    /* background-color: var(--oxford-blue); */
     color: #fff;
     width: 100%;
     height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    gap: 20px;
-    padding: 0 3%;
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px) ;
+    border-top-left-radius: 100px;
+    border-top-right-radius: 100px;
+    border-top: 1px solid var(--bice-blue);
+     /* -webkit-box-shadow: 0px -19px 58px -27px rgba(14, 106, 168, 0.445);
+    -moz-box-shadow: 0px -19px 58px -27pxrgba(14, 106, 168, 0.445); */
+    box-shadow: 0px -19px 58px -27px rgba(14, 106, 168, 0.767);
+    /* gap: clamp(0.75rem, 1.5vw, 1.25rem); */
+    /* padding: 0 clamp(1%, 2vw, 3%); */
 }
 
 .bottom-title h1 {
-    text-shadow: -5px 0px 7px rgba(0, 0, 0, 0.24);
+    text-shadow: -5px 0px 7px rgba(14, 106, 168, 0.041);
     font-size: clamp(2rem, 200px, 15vw);
     line-height: 1.1;
     word-wrap: break-word;
@@ -683,7 +701,9 @@ footer {
     color: #ffffff13;
     padding-top: 1.5rem;
     padding-bottom: 1.5rem;
-    border-bottom: 1px solid #ffffff1e;
+    
+   
+    /* border-bottom: 1px solid #ffffff1e; */
 }
 
 .footer-grid {
@@ -691,6 +711,11 @@ footer {
     grid-template-columns: 1fr 1fr 1fr 1fr;
     width: 100%;
     gap: 2rem;
+    padding-inline: 40px;
+    padding-block: 20px;
+
+    background-color: transparent;
+
 
     a {
         color: #fff;
@@ -713,7 +738,7 @@ footer {
     }
 
     .col {
-        border-top: 1px solid #333;
+        border: 1px solid #333;
         padding-top: 1.5rem;
     }
 
@@ -727,6 +752,8 @@ footer {
     display: flex;
     flex-direction: column;
     padding-top: 1.5rem;
+    /* border: 1px solid red; */
+    padding-inline: 30px;
 }
 
 .col-content {
@@ -738,7 +765,7 @@ footer {
 }
 
 .footer-grid h3 {
-    font-size: 20px;
+    font-size: clamp(0.75rem, 1.5vw, 1.25rem);
     text-transform: uppercase;
     margin-bottom: 10px;
 
@@ -747,7 +774,7 @@ footer {
 .contact a {
     background-color: transparent;
     border: 1px solid #fff;
-    /* width: 120px; */
+    /* width: 1clamp(0.75rem, 1.5vw, 1.25rem); */
     text-align: center;
     border-radius: 5px;
     padding: 8px;
@@ -758,8 +785,10 @@ footer {
 .main-footer {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    /* background-color: var(--black); */
-    padding: 1rem 0;
+    background-color: var(--penn-blue);
+    /* padding: clamp(0.8rem, 1vw, 1rem) 0; */
+    padding-inline: 70px;
+    padding-block: 20px;
 }
 
 .tagline {
@@ -791,14 +820,14 @@ footer {
     border-bottom: 1px solid #ffffff31;
     text-align: center;
 
-    h2{
+    h2 {
         color: #e9e9e9;
         text-transform: uppercase;
         /* background-color:rgba(14, 0, 164, 0.205);
         border-radius: 5px; */
     }
 
-    p{
+    p {
         padding-top: 2rem;
     }
 }
@@ -806,7 +835,7 @@ footer {
 .artist-name {
     font-family: 'falheiz', serif;
     font-size: 3.5rem;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.8rem;
     background: linear-gradient(90deg, white, rgb(218, 218, 218));
     -webkit-background-clip: text;
     background-clip: text;
@@ -847,7 +876,7 @@ footer {
     left: 0;
     width: 60%;
     height: 2px;
-    background: linear-gradient(90deg,  #a6e1faff, transparent);
+    background: linear-gradient(90deg, #a6e1faff, transparent);
 }
 
 .timeline-year {
@@ -855,11 +884,11 @@ footer {
     background-color: #fff;
     color: #333;
     padding: 0.3rem 0.8rem;
-    border-radius: 20px;
+    border-radius: clamp(0.75rem, 1.5vw, 1.25rem);
     font-size: 0.9rem;
     font-weight: 600;
-    margin-right: 0.5rem;
-    margin-bottom: 0.5rem;
+    margin-right: 0.8rem;
+    margin-bottom: 0.8rem;
 }
 
 /* Accordion Style Bio Sections */
@@ -868,7 +897,7 @@ footer {
 }
 
 .accordion-item {
-    margin-bottom: 1rem;
+    margin-bottom: clamp(0.8rem, 1vw, 1rem);
     border: 1px solid #ffffff31;
     border-radius: 8px;
     overflow: hidden;
@@ -882,7 +911,7 @@ footer {
 }
 
 .accordion-header {
-    padding: 1rem 1.5rem;
+    padding: clamp(0.8rem, 1vw, 1rem) 1.5rem;
     background: linear-gradient(90deg, rgba(107, 71, 97, 0.05), transparent);
     cursor: pointer;
     display: flex;
@@ -943,7 +972,7 @@ footer {
 
 .highlight-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(118, 129, 177, 0.15);
+    box-shadow: 0 8px clamp(0.75rem, 1.5vw, 1.25rem) rgba(118, 129, 177, 0.15);
 }
 
 .highlight-title {
@@ -967,7 +996,7 @@ footer {
     font-size: 4rem;
     color: var(--non-photo-blue);
     position: absolute;
-    top: -1rem;
+    top: -clamp(0.8rem, 1vw, 1rem);
     left: 2rem;
 }
 
@@ -986,7 +1015,7 @@ footer {
     }
 
     .artist-title {
-        font-size: 1rem;
+        font-size: clamp(0.8rem, 1vw, 1rem);
     }
 
     .bio-title {
@@ -1000,7 +1029,7 @@ footer {
 
 @media (max-width: 480px) {
     .container {
-        padding: 1rem;
+        padding: clamp(0.8rem, 1vw, 1rem);
     }
 
     .artist-name {
@@ -1008,7 +1037,7 @@ footer {
     }
 
     .timeline-year {
-        margin-bottom: 0.5rem;
+        margin-bottom: 0.8rem;
     }
 
     .accordion-title {
@@ -1024,7 +1053,7 @@ footer {
 .work-container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 2rem 3%;
+    padding: 2rem clamp(1%, 2vw, 3%);
 }
 
 /* header {
@@ -1036,7 +1065,7 @@ footer {
 /* h1 {
     font-size: 3rem;
     font-weight: 300;
-    margin-bottom: 1rem;
+    margin-bottom: clamp(0.8rem, 1vw, 1rem);
     letter-spacing: 2px;
     position: relative;
     display: inline-block;
@@ -1083,7 +1112,7 @@ footer {
 
 .poem:hover {
     transform: translateY(-5px);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 15px clamp(1.5rem, 3vw, 2.5rem) rgba(0, 0, 0, 0.4);
 }
 
 .poem::before {
@@ -1103,7 +1132,7 @@ footer {
 
 .poem-title {
     font-size: 2rem;
-    margin-bottom: 1rem;
+    margin-bottom: clamp(0.8rem, 1vw, 1rem);
     color: var(--text-primary);
     position: relative;
     font-family: 'chillen';
@@ -1124,7 +1153,7 @@ footer {
 
 .poem-content {
     white-space: pre-line;
-    font-size: 1.1rem;
+    font-size: 1.clamp(0.8rem, 1vw, 1rem);
     line-height: 1.8;
     color: #fff;
 }
@@ -1178,10 +1207,10 @@ footer {
 
 .scroll-indicator {
     position: absolute;
-    bottom: 20px;
-    right: 20px;
-    width: 40px;
-    height: 40px;
+    bottom: clamp(0.75rem, 1.5vw, 1.25rem);
+    right: clamp(0.75rem, 1.5vw, 1.25rem);
+    width: clamp(1.5rem, 3vw, 2.5rem);
+    height: clamp(1.5rem, 3vw, 2.5rem);
     border-radius: 50%;
     background-color: var(--duke-blue);
     display: flex;
