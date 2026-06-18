@@ -1,145 +1,219 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Request a booking for Nomashenge Dlamini - performance poetry, vocals, and speaking engagements.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <title>Book Nomashenge</title>
+    <title>Book Nomashenge Dlamini</title>
 </head>
-<body class="overlay-color">
+
+<body class="dark-theme">
+    <!-- WebGL Background Canvas -->
+    <canvas id="webgl-background"></canvas>
+
+    <!-- Header / Navbar -->
     <header class="header">
-        <nav class="navbar">
-            <button class="hamburger" aria-label="Menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-
-           
-           <div class="logo">
-                <a href="index.html"><img src="assets/images/Nomashenge Artwork.jpg" alt="logo-image" width="70px" height="70px" loading="lazy"></a>
+        <nav class="navbar" id="main-navbar">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="assets/images/Nomashenge Artwork.jpg" alt="Nomashenge Artwork logo" width="70" height="70" loading="lazy">
+                </a>
             </div>
-
-
 
             <div class="nav-links">
                 <a href="index.html">Home</a>
                 <a href="about.html">About</a>
-                <a href="work.html">More Links</a>
+                <a href="work.html">My Work</a>
             </div>
 
+            <div class="login-btn-container">
+                <a href="booking.html" class="nav-booking-btn active">Booking</a>
+            </div>
 
-            <a href="booking.html"><button class="login-button">Booking</button></a>
+            <button class="hamburger" aria-label="Toggle Menu" aria-expanded="false" id="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </nav>
     </header>
 
-    <div class="container">
-        <header class="artist-header">
-          <h1 class="artist-name">Nomashenge Dlamini</h1>
-          <h2>Send A Booking Request</h2>
-
-          <!-- <div class="artist-title">Poet • Vocalist • Pharmacist</div>
-          <div class="timeline-year">Born 1992</div>
-          <div class="timeline-year">Ladysmith Native</div>
-          <div class="timeline-year">Johannesburg Based</div> -->
+    <!-- Booking Content -->
+    <div class="container booking-container">
+        <header class="artist-header fade-in-up">
+            <h1 class="artist-name reveal-text">Nomashenge Dlamini</h1>
+            <h2 class="form-section-title">Send A Booking Request</h2>
         </header>
 
-    
-        <form>
-          <div class="form-grid">
-            <div class="form-group">
-              <label>Full Name *</label>
-              <input type="text" required>
+        <form class="booking-form glass-card fade-in-up">
+            <div class="form-grid">
+                <div class="form-group">
+                    <label for="full-name">Full Name *</label>
+                    <input type="text" id="full-name" required placeholder="Enter your full name">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Contact Email *</label>
+                    <input type="email" id="email" required placeholder="name@example.com">
+                </div>
+
+                <div class="form-group">
+                    <label for="event-date">Event Date *</label>
+                    <input type="date" id="event-date" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="location">Event Location *</label>
+                    <input type="text" id="location" required placeholder="City, Country">
+                </div>
+
+                <div class="form-group">
+                    <label for="event-name">Event Name *</label>
+                    <input type="text" id="event-name" required placeholder="e.g. Essence Festival">
+                </div>
+
+                <div class="form-group">
+                    <label for="audience">Expected Audience Size *</label>
+                    <select id="audience" required>
+                        <option value="" disabled selected>Select audience size</option>
+                        <option>1 - 50</option>
+                        <option>51 - 100</option>
+                        <option>101 - 200</option>
+                        <option>201 - 500</option>
+                        <option>500+</option>
+                    </select>
+                </div>
+
+                <div class="form-full">
+                    <label class="form-full-label">Event Type</label>
+                    <div class="checkbox-group">
+                        <label class="checkbox-item">
+                            <input type="checkbox" name="event-type" value="Club"> Club
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" name="event-type" value="Festival"> Festival
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" name="event-type" value="Private Event/Party"> Private Event/Party
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" name="event-type" value="Corporate Function"> Corporate Function
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" name="event-type" value="Radio Station Promotion"> Radio Station
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" name="event-type" value="Hotel or Casino"> Hotel or Casino
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" name="event-type" value="Independent Promoter"> Independent Promoter
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" name="event-type" value="Other"> Other
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-full">
+                    <div class="form-group">
+                        <label for="comments">Comments</label>
+                        <textarea id="comments" rows="4" placeholder="Provide any additional details or requirements..."></textarea>
+                    </div>
+                </div>
             </div>
-    
-            <div class="form-group">
-              <label>Contact Email *</label>
-              <input type="email" required>
-            </div>
-    
-            <div class="form-group">
-              <label>Event Date *</label>
-              <input type="date" required>
-            </div>
-    
-            <div class="form-group">
-              <label>Event Location *</label>
-              <input type="text" required>
-            </div>
-    
-            <div class="form-group">
-              <label>Event Name *</label>
-              <input type="text" required>
-            </div>
-    
-            <div class="form-group">
-              <label>Expected Audience Size *</label>
-              <select required>
-                <option>1 - 50</option>
-                <option>51 - 100</option>
-                <option>101 - 200</option>
-                <option>201 - 500</option>
-                <option>500+</option>
-              </select>
-            </div>
-    
-            <div class="form-full">
-              <label class="form-full-label">Event Type</label>
-              <div class="checkbox-group">
-                <label class="checkbox-item">
-                  <input type="checkbox"> Club
-                </label>
-                <label class="checkbox-item">
-                  <input type="checkbox"> Festival
-                </label>
-                <label class="checkbox-item">
-                  <input type="checkbox"> Private Event/Party
-                </label>
-                <label class="checkbox-item">
-                  <input type="checkbox"> Corporate Function
-                </label>
-                <label class="checkbox-item">
-                  <input type="checkbox"> Radio Station Promotion
-                </label>
-                <label class="checkbox-item">
-                  <input type="checkbox"> Hotel or Casino
-                </label>
-                <label class="checkbox-item">
-                  <input type="checkbox"> Independent Promoter
-                </label>
-                <label class="checkbox-item">
-                  <input type="checkbox"> Other
-                </label>
-              </div>
-            </div>
-    
-            <div class="form-full">
-              <div class="form-group">
-                <label>Comments</label>
-                <textarea rows="4" placeholder="Leave any comments if necessary (e.g., if event date, location, or name is unknown)"></textarea>
-              </div>
-            </div>
-          </div>
-    
-          <button type="submit" class="btn">Next</button>
+
+            <button type="submit" class="btn submit-btn">Submit Request</button>
         </form>
-    
-        <div class="process-steps">
-          <h3>OUR BOOKING PROCESS</h3>
-          <div class="step">
-            <h4>STEP 1</h4>
-            <p>Fill out the form with details about your event, including date, location, and the artists you'd like to book. Please provide as much information as possible.</p>
-          </div>
-          <div class="step">
-            <h4>STEP 2</h4>
-            <p>Once we receive your request, our team will review it and get in touch to confirm availability, discuss logistics, and finalize the booking terms within 2-3 working days.</p>
-          </div>
-          <div class="step">
-            <h4>STEP 3</h4>
-            <p>Once approved, we will discuss your profile and how you want to be shown on the platform, ready for opportunities to perform at events, festivals, and clubs all over the world!</p>
-          </div>
+
+        <!-- Process Flow Cards -->
+        <div class="process-steps fade-in-up">
+            <h3 class="process-title">OUR BOOKING PROCESS</h3>
+            <div class="steps-grid">
+                <div class="step glass-card">
+                    <div class="step-num">01</div>
+                    <h4>Request Submission</h4>
+                    <p>Fill out the form with details about your event, including date, location, and the type of performance required. Please provide as much details as possible.</p>
+                </div>
+                <div class="step glass-card">
+                    <div class="step-num">02</div>
+                    <h4>Review & Terms</h4>
+                    <p>Once we receive your request, our team will review the details and get in touch to confirm availability, discuss logistics, and finalize the booking terms within 2-3 working days.</p>
+                </div>
+                <div class="step glass-card">
+                    <div class="step-num">03</div>
+                    <h4>Confirmation</h4>
+                    <p>Once approved, we will finalize all agreements and prepare for a stunning performance ready to captivate your audience at the event!</p>
+                </div>
+            </div>
         </div>
-      </div>
-      <script src="main.js"></script>
-    </body>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="bottom-title">
+            <h2>Nomashenge Dlamini</h2>
+        </div>
+
+        <div class="footer-grid">
+            <div class="navigate col">
+                <div class="col-content">
+                    <h3>Navigate</h3>
+                    <a href="index.html#music">Music</a>
+                    <a href="about.html">About</a>
+                    <a href="work.html">My Work</a>
+                </div>
+            </div>
+            <div class="follow col">
+                <div class="col-content">
+                    <h3>Follow</h3>
+                    <a href="#" target="_blank" rel="noopener">Spotify</a>
+                    <a href="#" target="_blank" rel="noopener">YouTube</a>
+                    <a href="#" target="_blank" rel="noopener">Apple Music</a>
+                </div>
+            </div>
+
+            <div class="visit col">
+                <div class="col-content">
+                    <h3>Visit</h3>
+                    <p>By Appointment Only</p>
+                    <p>Johannesburg, GP</p>
+                </div>
+            </div>
+
+            <div class="contact col">
+                <div class="col-content">
+                    <h3>Contact</h3>
+                    <a href="booking.html" class="footer-cta-btn">Book For Shows</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="main-footer">
+            <div class="rights">
+                <small>All Rights Reserved</small>
+            </div>
+
+            <div class="tagline">
+                <small>Be Smart, Work Hard.</small>
+            </div>
+
+            <div class="copyright">
+                <small>&copy; 2026 Nomashenge Dlamini. Designed by NoWanDESIGNS</small>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="main.js"></script>
+</body>
+
 </html>
