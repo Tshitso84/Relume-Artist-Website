@@ -72,74 +72,85 @@
         <h2 class="section-title fade-in-up">Latest Music Releases</h2>
         <div class="music-list">
             <!-- Track 1 -->
-            <div class="track glass-card fade-in-up">
-                <div class="track-header">
-                    <span class="track-number">01</span>
-                    <h3>Izinyoni</h3>
-                </div>
+            <div class="track glass-card fade-in-up" data-title="Izinyoni" data-artist="Nomashenge Dlamini" data-spotify="#" data-apple="#" data-bandcamp="#" data-youtube="#">
+                <button class="artwork-trigger" type="button" aria-label="Play Izinyoni" aria-haspopup="dialog" aria-controls="music-player-modal">
+                    <img class="track-artwork" src="assets/images/Nomashenge Artwork.jpg" alt="Izinyoni single artwork" loading="lazy">
+                    <span class="artwork-overlay" aria-hidden="true"></span>
+                    <span class="discover-meta" aria-hidden="true">
+                        <span class="track-number">01</span>
+                        <span class="discover-copy">
+                            <span class="discover-title">Izinyoni</span>
+                            <span class="track-artist">Nomashenge Dlamini</span>
+                        </span>
+                        <span class="discover-play"><i class="fa fa-play"></i></span>
+                    </span>
+                </button>
                 <audio class="audio-element">
                     <source src="track1.mp3" type="audio/mpeg">
                     Your browser does not support the audio element.
                 </audio>
-                
-                <!-- Custom Premium Player UI -->
-                <div class="custom-player">
-                    <button class="play-btn" aria-label="Play"><i class="fa fa-play"></i></button>
-                    <div class="player-controls">
-                        <div class="timeline-container">
-                            <div class="timeline-slider">
-                                <div class="timeline-progress"></div>
-                                <div class="timeline-handle"></div>
-                            </div>
-                        </div>
-                        <div class="player-time">
-                            <span class="current-time">00:00</span>
-                            <span class="duration-time">00:00</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="streaming-links">
-                    <a href="#" class="fa fa-spotify" aria-label="Listen on Spotify"></a>
-                    <a href="#" class="fa fa-apple" aria-label="Listen on Apple Music"></a>
-                    <a href="#" class="fa fa-bandcamp" aria-label="Listen on Bandcamp"></a>
-                    <a href="#" class="fa fa-youtube" aria-label="Watch on YouTube"></a>
-                </div>
             </div>
 
             <!-- Track 2 -->
-            <div class="track glass-card fade-in-up">
-                <div class="track-header">
-                    <span class="track-number">02</span>
-                    <h3>One For You</h3>
-                </div>
+            <div class="track glass-card fade-in-up" data-title="One For You" data-artist="Nomashenge Dlamini" data-spotify="#" data-apple="#" data-bandcamp="#" data-youtube="#">
+                <button class="artwork-trigger" type="button" aria-label="Play One For You" aria-haspopup="dialog" aria-controls="music-player-modal">
+                    <img class="track-artwork" src="assets/images/FB_IMG_1737153269816.jpg" alt="One For You single artwork" loading="lazy">
+                    <span class="artwork-overlay" aria-hidden="true"></span>
+                    <span class="discover-meta" aria-hidden="true">
+                        <span class="track-number">02</span>
+                        <span class="discover-copy">
+                            <span class="discover-title">One For You</span>
+                            <span class="track-artist">Nomashenge Dlamini</span>
+                        </span>
+                        <span class="discover-play"><i class="fa fa-play"></i></span>
+                    </span>
+                </button>
                 <audio class="audio-element">
                     <source src="track2.mp3" type="audio/mpeg">
                     Your browser does not support the audio element.
                 </audio>
+            </div>
+        </div>
 
-                <!-- Custom Premium Player UI -->
-                <div class="custom-player">
-                    <button class="play-btn" aria-label="Play"><i class="fa fa-play"></i></button>
+        <!-- Pop-up Music Player -->
+        <div class="player-modal" id="music-player-modal" aria-hidden="true">
+            <div class="player-modal-backdrop" data-close-modal></div>
+            <div class="player-modal-dialog glass-card" role="dialog" aria-modal="true" aria-labelledby="modal-track-title">
+                <button class="player-modal-close" type="button" aria-label="Close music player" data-close-modal>
+                    <i class="fa fa-times" aria-hidden="true"></i>
+                </button>
+
+                <img class="modal-artwork" src="" alt="Currently selected song artwork">
+
+                <div class="track-header modal-track-header">
+                    <span class="track-number modal-track-number">00</span>
+                    <h3 id="modal-track-title">Now Playing</h3>
+                </div>
+                <p class="modal-track-artist">Nomashenge Dlamini</p>
+
+                <audio class="audio-element modal-audio"></audio>
+
+                <div class="custom-player modal-player">
+                    <button class="play-btn modal-play-btn" aria-label="Play"><i class="fa fa-play"></i></button>
                     <div class="player-controls">
                         <div class="timeline-container">
-                            <div class="timeline-slider">
-                                <div class="timeline-progress"></div>
-                                <div class="timeline-handle"></div>
+                            <div class="timeline-slider modal-timeline-slider">
+                                <div class="timeline-progress modal-timeline-progress"></div>
+                                <div class="timeline-handle modal-timeline-handle"></div>
                             </div>
                         </div>
                         <div class="player-time">
-                            <span class="current-time">00:00</span>
-                            <span class="duration-time">00:00</span>
+                            <span class="current-time modal-current-time">00:00</span>
+                            <span class="duration-time modal-duration-time">00:00</span>
                         </div>
                     </div>
                 </div>
 
-                <div class="streaming-links">
-                    <a href="#" class="fa fa-spotify" aria-label="Listen on Spotify"></a>
-                    <a href="#" class="fa fa-apple" aria-label="Listen on Apple Music"></a>
-                    <a href="#" class="fa fa-bandcamp" aria-label="Listen on Bandcamp"></a>
-                    <a href="#" class="fa fa-youtube" aria-label="Watch on YouTube"></a>
+                <div class="streaming-links modal-streaming-links">
+                    <a href="#" class="fa fa-spotify modal-spotify" aria-label="Listen on Spotify" target="_blank" rel="noopener"></a>
+                    <a href="#" class="fa fa-apple modal-apple" aria-label="Listen on Apple Music" target="_blank" rel="noopener"></a>
+                    <a href="#" class="fa fa-bandcamp modal-bandcamp" aria-label="Listen on Bandcamp" target="_blank" rel="noopener"></a>
+                    <a href="#" class="fa fa-youtube modal-youtube" aria-label="Watch on YouTube" target="_blank" rel="noopener"></a>
                 </div>
             </div>
         </div>

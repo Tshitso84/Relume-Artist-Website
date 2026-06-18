@@ -287,105 +287,176 @@ function toggleAccordion(headerEl) {
 
 
 // ============================================================
-// CUSTOM AUDIO PLAYER
+// POP-UP AUDIO PLAYER (Music section)
 // ============================================================
 
-(function initAudioPlayers() {
-    const trackCards = document.querySelectorAll('.track');
-    if (!trackCards.length) return;
+(function initMusicPlayerModal() {
+    const modal = document.getElementById('music-player-modal');
+    if (!modal) return;
 
-    trackCards.forEach((card) => {
-        const audio     = card.querySelector('.audio-element');
-        const playBtn   = card.querySelector('.play-btn');
-        const icon      = playBtn  ? playBtn.querySelector('i')  : null;
-        const timeline  = card.querySelector('.timeline-slider');
-        const progress  = card.querySelector('.timeline-progress');
-        const handle    = card.querySelector('.timeline-handle');
-        const curTime   = card.querySelector('.current-time');
-        const durTime   = card.querySelector('.duration-time');
+    const cardTriggers = document.querySelectorAll('.track .artwork-trigger');
+    if (!cardTriggers.length) return;
 
-        if (!audio || !playBtn) return;
+    const modalAudio = modal.querySelector('.modal-audio');
+    const modalTitle = modal.querySelector('#modal-track-title');
+    const modalArtist = modal.querySelector('.modal-track-artist');
+    const modalNumber = modal.querySelector('.modal-track-number');
+    const modalArtwork = modal.querySelector('.modal-artwork');
+    const playBtn = modal.querySelector('.modal-play-btn');
+    const playIcon = playBtn ? playBtn.querySelector('i') : null;
+    const timeline = modal.querySelector('.modal-timeline-slider');
+    const progress = modal.querySelector('.modal-timeline-progress');
+    const handle = modal.querySelector('.modal-timeline-handle');
+    const curTime = modal.querySelector('.modal-current-time');
+    const durTime = modal.querySelector('.modal-duration-time');
+    const modalSpotify = modal.querySelector('.modal-spotify');
+    const modalApple = modal.querySelector('.modal-apple');
+    const modalBandcamp = modal.querySelector('.modal-bandcamp');
+    const modalYoutube = modal.querySelector('.modal-youtube');
 
-        // Format seconds → mm:ss
-        function formatTime(s) {
-            if (isNaN(s) || !isFinite(s)) return '00:00';
-            const m = Math.floor(s / 60);
-            const sec = Math.floor(s % 60);
-            return `${String(m).padStart(2,'0')}:${String(sec).padStart(2,'0')}`;
+    if (!modalAudio || !playBtn || !timeline) return;
+
+    function formatTime(s) {
+        if (isNaN(s) || !isFinite(s)) return '00:00';
+        const m = Math.floor(s / 60);
+        const sec = Math.floor(s % 60);
+        return `${String(m).padStart(2, '0')}:${String(sec).padStart(2, '0')}`;
+    }
+
+    function setPlayState(isPlaying) {
+        playBtn.classList.toggle('playing', isPlaying);
+        if (!playIcon) return;
+        playIcon.classList.toggle('fa-play', !isPlaying);
+        playIcon.classList.toggle('fa-pause', isPlaying);
+    }
+
+    function resetTimeline() {
+        if (progress) progress.style.width = '0%';
+        if (handle) handle.style.left = '0%';
+        if (curTime) curTime.textContent = '00:00';
+        if (durTime) durTime.textContent = '00:00';
+    }
+
+    function openModal() {
+        modal.classList.add('open');
+        modal.setAttribute('aria-hidden', 'false');
+        document.body.classList.add('modal-open');
+    }
+
+    function closeModal() {
+        modal.classList.remove('open');
+        modal.setAttribute('aria-hidden', 'true');
+        document.body.classList.remove('modal-open');
+        modalAudio.pause();
+        setPlayState(false);
+    }
+
+    function openTrackFromCard(card) {
+        const trackTitle = card.querySelector('.discover-title');
+        const trackNum = card.querySelector('.track-number');
+        const trackAudioSource = card.querySelector('.audio-element source');
+        const artworkImage = card.querySelector('.track-artwork');
+        const artistName = card.dataset.artist || '';
+        const fallbackTitle = card.dataset.title || '';
+
+        if (!trackAudioSource || !trackAudioSource.src) return;
+
+        if (modalTitle) {
+            modalTitle.textContent = trackTitle
+                ? trackTitle.textContent.trim()
+                : fallbackTitle || 'Now Playing';
+        }
+        if (modalArtist) {
+            modalArtist.textContent = artistName || 'Nomashenge Dlamini';
+        }
+        if (modalNumber && trackNum) modalNumber.textContent = trackNum.textContent.trim();
+
+        if (modalArtwork && artworkImage) {
+            modalArtwork.src = artworkImage.src;
+            modalArtwork.alt = artworkImage.alt;
         }
 
-        // Update duration label once metadata loaded
-        audio.addEventListener('loadedmetadata', () => {
-            if (durTime) durTime.textContent = formatTime(audio.duration);
+        if (modalSpotify) modalSpotify.href = card.dataset.spotify || '#';
+        if (modalApple) modalApple.href = card.dataset.apple || '#';
+        if (modalBandcamp) modalBandcamp.href = card.dataset.bandcamp || '#';
+        if (modalYoutube) modalYoutube.href = card.dataset.youtube || '#';
+
+        if (modalAudio.src !== trackAudioSource.src) {
+            modalAudio.src = trackAudioSource.src;
+            modalAudio.load();
+            resetTimeline();
+        }
+
+        openModal();
+        modalAudio.play().then(() => {
+            setPlayState(true);
+        }).catch(() => {
+            setPlayState(false);
         });
+    }
 
-        // Toggle play / pause
-        playBtn.addEventListener('click', () => {
-            if (audio.paused) {
-                // Pause all other audios first
-                document.querySelectorAll('.audio-element').forEach((a) => {
-                    if (a !== audio) {
-                        a.pause();
-                        const otherCard = a.closest('.track');
-                        if (otherCard) {
-                            const btn  = otherCard.querySelector('.play-btn');
-                            const ico  = btn ? btn.querySelector('i') : null;
-                            if (btn)  btn.classList.remove('playing');
-                            if (ico) { ico.classList.remove('fa-pause'); ico.classList.add('fa-play'); }
-                        }
-                    }
-                });
+    modalAudio.addEventListener('loadedmetadata', () => {
+        if (durTime) durTime.textContent = formatTime(modalAudio.duration);
+    });
 
-                audio.play().catch(() => {});
-                playBtn.classList.add('playing');
-                if (icon) { icon.classList.remove('fa-play'); icon.classList.add('fa-pause'); }
-            } else {
-                audio.pause();
-                playBtn.classList.remove('playing');
-                if (icon) { icon.classList.remove('fa-pause'); icon.classList.add('fa-play'); }
-            }
+    modalAudio.addEventListener('timeupdate', () => {
+        if (!modalAudio.duration) return;
+        const pct = (modalAudio.currentTime / modalAudio.duration) * 100;
+        if (progress) progress.style.width = pct + '%';
+        if (handle) handle.style.left = pct + '%';
+        if (curTime) curTime.textContent = formatTime(modalAudio.currentTime);
+    });
+
+    modalAudio.addEventListener('ended', () => {
+        setPlayState(false);
+        if (progress) progress.style.width = '0%';
+        if (handle) handle.style.left = '0%';
+        if (curTime) curTime.textContent = '00:00';
+    });
+
+    playBtn.addEventListener('click', () => {
+        if (modalAudio.paused) {
+            modalAudio.play().then(() => setPlayState(true)).catch(() => setPlayState(false));
+        } else {
+            modalAudio.pause();
+            setPlayState(false);
+        }
+    });
+
+    timeline.addEventListener('click', (e) => {
+        const rect = timeline.getBoundingClientRect();
+        const pct = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
+        if (modalAudio.duration) {
+            modalAudio.currentTime = pct * modalAudio.duration;
+        }
+    });
+
+    let dragging = false;
+    timeline.addEventListener('mousedown', () => { dragging = true; });
+    window.addEventListener('mousemove', (e) => {
+        if (!dragging) return;
+        const rect = timeline.getBoundingClientRect();
+        const pct = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
+        if (modalAudio.duration) {
+            modalAudio.currentTime = pct * modalAudio.duration;
+        }
+    });
+    window.addEventListener('mouseup', () => { dragging = false; });
+
+    cardTriggers.forEach((trigger) => {
+        trigger.addEventListener('click', () => {
+            const card = trigger.closest('.track');
+            if (card) openTrackFromCard(card);
         });
+    });
 
-        // Update progress bar & handle
-        audio.addEventListener('timeupdate', () => {
-            if (!audio.duration) return;
-            const pct = (audio.currentTime / audio.duration) * 100;
-            if (progress) progress.style.width  = pct + '%';
-            if (handle)   handle.style.left     = pct + '%';
-            if (curTime)  curTime.textContent   = formatTime(audio.currentTime);
-        });
+    modal.querySelectorAll('[data-close-modal]').forEach((el) => {
+        el.addEventListener('click', closeModal);
+    });
 
-        // Ended → reset
-        audio.addEventListener('ended', () => {
-            playBtn.classList.remove('playing');
-            if (icon) { icon.classList.remove('fa-pause'); icon.classList.add('fa-play'); }
-            if (progress) progress.style.width = '0%';
-            if (handle)   handle.style.left    = '0%';
-            if (curTime)  curTime.textContent  = '00:00';
-        });
-
-        // Click on timeline to seek
-        if (timeline) {
-            timeline.addEventListener('click', (e) => {
-                const rect = timeline.getBoundingClientRect();
-                const pct  = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
-                if (audio.duration) {
-                    audio.currentTime = pct * audio.duration;
-                }
-            });
-
-            // Drag seek
-            let dragging = false;
-            timeline.addEventListener('mousedown', () => { dragging = true; });
-            window.addEventListener('mousemove', (e) => {
-                if (!dragging) return;
-                const rect = timeline.getBoundingClientRect();
-                const pct  = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
-                if (audio.duration) {
-                    audio.currentTime = pct * audio.duration;
-                }
-            });
-            window.addEventListener('mouseup', () => { dragging = false; });
+    window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('open')) {
+            closeModal();
         }
     });
 })();
